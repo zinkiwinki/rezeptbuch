@@ -1,0 +1,11 @@
+<nav>
+  <div class="navbar">
+    <mat-icon aria-hidden="false" style="vertical-align: sub;">import_contacts</mat-icon>
+    <a routerLink="/recipes" mat-button style="font-size: 16px;">Rezeptbuch</a>
+    <button mat-button [matMenuTriggerFor]="menu" style="font-size: 16px;">Rezepte</button>
+    <mat-menu #menu="matMenu">
+      <a routerLink="/recipes" mat-menu-item><mat-icon aria-hidden="false" style="vertical-align: sub;">import_contacts</mat-icon>Rezepte anzeigen</a>
+      <a mat-menu-item><mat-icon aria-hidden="false" style="vertical-align: sub;">add</mat-icon>Rezept anlegen</a>
+    </mat-menu>
+  </div>
+</nav>

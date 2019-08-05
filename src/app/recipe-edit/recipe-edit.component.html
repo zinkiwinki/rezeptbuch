@@ -1,10 +1,20 @@
-<div *ngIf="recipe">
-  <button (click)="goBack()">go back</button>
+<app-header>
+    <h1 text style="margin-top: 0; margin-bottom: 0;">Rezept {{recipe.name || "neu anlegen"}}</h1>
+    <div buttons style="float:right;">
+      <button *ngIf='isExisting' mat-button style="background-color: #618f30;color:white;">
+        <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Rezept bearbeiten
+      </button>
+      <button  mat-button style="background-color: #618f30;color:white;">
+          <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px;">save</mat-icon>Speichern
+        </button>
+    </div>
+  </app-header>
+
+  <!-- <button (click)="goBack()">go back</button>
   <h2>{{recipe.name | uppercase}} Details</h2>
   <div><span>id: </span>{{recipe.id}}</div>
   <div>
     <label>name:
       <input [(ngModel)]="recipe.name" placeholder="name"/>
     </label>
-  </div>
-  </div>
+  </div> -->

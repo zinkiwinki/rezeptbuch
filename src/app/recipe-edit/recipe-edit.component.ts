@@ -12,13 +12,23 @@ import { RecipeService } from '../recipe.service';
 export class RecipeEditComponent implements OnInit {
   @Input() recipe: Recipe;
 
+  ingredients = ['Zwiebel', 'Fleisch', 'Salz', 'Käse'];
+  isExisting = true;
+
   constructor(private route: ActivatedRoute, private recipeService: RecipeService, private location: Location) {}
 
   getRecipe() {
     const id = +this.route.snapshot.paramMap.get('id');
+    if (!id) {
+      return;
+    }
     this.recipeService.getRecipe(id).subscribe((recipe) => (this.recipe = recipe));
+    
+    if (!this.recipe) {
+      this.isExisting = false;
+    }
   }
-  
+
   goBack(): void {
     this.location.back();
   }

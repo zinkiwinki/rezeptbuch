@@ -10,10 +10,14 @@ import { MaterialImports } from './app.material-imports';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { NavbarComponent } from './navbar/navbar.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, RecipesComponent, RecipeEditComponent, MessagesComponent, DashboardComponent],
+  declarations: [AppComponent, RecipesComponent, RecipeEditComponent, MessagesComponent,
+    NavbarComponent,
+    HeaderComponent,],
   imports: [
     BrowserModule,
     FormsModule,
