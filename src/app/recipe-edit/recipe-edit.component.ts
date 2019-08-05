@@ -22,7 +22,7 @@ export class RecipeEditComponent implements OnInit {
     if (!id) {
       return;
     }
-    this.recipeService.getRecipe(id).subscribe((recipe) => (this.recipe = recipe));
+    this.recipeService.getRecipe(id).subscribe((recipe) => (this.recipe = recipe)); 
     
     if (!this.recipe) {
       this.isExisting = false;

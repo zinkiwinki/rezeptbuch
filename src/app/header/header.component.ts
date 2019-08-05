@@ -18,6 +18,6 @@ export class HeaderComponent implements OnInit {
     this.location.back();
   }
   ngOnInit() {
-  }
+  }  
 
 }

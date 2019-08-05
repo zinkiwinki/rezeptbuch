@@ -30,6 +30,6 @@ export class RecipeService {
   getRecipe(id): Observable<Recipe> {
     // TODO: send the message _after_ fetching the hero
     this.messageService.add(`RecipeService: fetched Recipe id=${id}`);
-    return of(this.recipes.find((recipe) => recipe.id === id));
+    return of(this.recipes.find((recipe) => recipe.id === id)); 
   }
 }
