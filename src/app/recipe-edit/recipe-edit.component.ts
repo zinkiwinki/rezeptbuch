@@ -1,11 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipes/recipe';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RecipeService } from '../recipe.service';
 
 import { IngredientService } from '../ingredient.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -15,53 +14,39 @@ import { FormControl } from '@angular/forms';
 export class RecipeEditComponent implements OnInit {
   panelOpenState = true;
 
-  @Input() recipe: Recipe;
+  recipe: Recipe;
 
-  originalIngredients;
+  ingredients;
   isExisting = true;
-  ingredient;
 
-  constructor(private route: ActivatedRoute, private ingredientService: IngredientService, private recipeService: RecipeService, private location: Location) {
-    // this.ingredient.subscribe(this.changeIngredients);
-  }
-
-  selectIngredient(){
-    console.log("hallo hallo");
-    return [];
-  }
-
-  changeIngredients(){
-    console.log(this.ingredient);
-  }
+  constructor(private route: ActivatedRoute, private ingredientService: IngredientService, private recipeService: RecipeService, private location: Location) {}
 
   getRecipe() {
     const id = +this.route.snapshot.paramMap.get('id');
-    if (!id) {
-      return;
+    if (id) {
+      this.recipeService.getRecipe(id).subscribe((recipe) => (this.recipe = recipe));
     }
-    this.recipeService.getRecipe(id).subscribe((recipe) => (this.recipe = recipe));
 
     if (!this.recipe) {
       this.isExisting = false;
-      return;
+      this.recipe = new Recipe('', '', '', [], '');
     }
-    this.ingredient = this.recipe.ingredients;
-    console.log(this.ingredient);
-
-    // this.ingredientService.getIngredient();
   }
 
   getIngredients() {
-    this.ingredientService.getIngredients().subscribe((ingredients) => (this.originalIngredients = ingredients));
+    this.ingredientService.getIngredients().subscribe((ingredients) => (this.ingredients = ingredients));
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  save(){
-    console.log(this.recipe);
-    console.log(this.ingredient);
+  save() {
+    if (this.isExisting) {
+      console.log(this.recipe);
+    } else {
+      this.recipeService.saveRecipe(this.recipe);
+    }
   }
 
   ngOnInit() {

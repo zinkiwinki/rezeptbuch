@@ -4,4 +4,6 @@ export class Recipe {
   imageUrl: string;
   ingredients: Object[];
   preparation: string;
-} 
+
+  constructor(id, name, imageUrl, ingredients, preparation) {}
+}

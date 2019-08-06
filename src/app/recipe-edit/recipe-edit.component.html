@@ -14,8 +14,12 @@
         Bild
       </mat-panel-title>
     </mat-expansion-panel-header>
-
-    <img [src]="recipe.imageUrl" height="100" width="100" />
+    <div>
+      <img *ngIf="!!recipe.imageUrl" [src]="recipe.imageUrl" height="100" width="100" />
+    </div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Bild URL" name="imageUrl" [(ngModel)]="recipe.imageUrl"/>
+    </mat-form-field>
   </mat-expansion-panel>
 
   <mat-expansion-panel class="recipe_panel" [expanded]="true" [disabled]="true">
@@ -26,16 +30,16 @@
     </mat-expansion-panel-header>
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Favorite food" name="name" [(ngModel)]="recipe.name" placeholder="Name" />
+      <input matInput name="name" [(ngModel)]="recipe.name" placeholder="Name" />
     </mat-form-field>
 
-    <p>Options: {{ originalIngredients | json }}</p>
-    <p>Selected objects: {{ recipe.ingredients | json }}</p>
+    <!-- <p>Options: {{ ingredients | json }}</p>
+    <p>Selected objects: {{ recipe.ingredients | json }}</p> -->
 
-    <mat-form-field>
+    <mat-form-field class="example-full-width">
       <mat-label>Zutaten</mat-label>
-      <mat-select multiple [(ngModel)]="recipe.ingredients" class="example-select">
-        <mat-option *ngFor="let obj of originalIngredients" [value]="obj">{{ obj.name }}</mat-option>
+      <mat-select multiple [(ngModel)]="recipe.ingredients">
+        <mat-option *ngFor="let obj of ingredients" [value]="obj">{{ obj.name }}</mat-option>
       </mat-select>
 
       <!-- <mat-select [(ngModel)]="recipe.ingredients" name="ingredient" multiple>
@@ -53,11 +57,16 @@
       <mat-panel-title>
         Zutaten
       </mat-panel-title>
+      <mat-panel-description>
+          <button (click)="save()" mat-button style="background-color: #618f30;color:white;">
+              <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">shopping_card</mat-icon>Zutaten zur Einkaufsliste hinzufügen
+            </button>
+      </mat-panel-description>
     </mat-expansion-panel-header>
 
     <div *ngFor="let ingredient of recipe.ingredients">
       <mat-form-field class="example-full-width">
-        <input matInput type="number" placeholder="{{ ingredient.name }}" name="name" [(ngModel)]="ingredient.amount" />
+        <input matInput type="number" placeholder="Anzahl von {{ ingredient.name }} in {{ ingredient.unit }}" name="name" [(ngModel)]="ingredient.amount" />
       </mat-form-field>
     </div>
   </mat-expansion-panel>

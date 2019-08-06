@@ -5,7 +5,8 @@
     <button mat-button [matMenuTriggerFor]="menu" style="font-size: 16px;">Rezepte</button>
     <mat-menu #menu="matMenu">
       <a routerLink="/recipes" mat-menu-item><mat-icon aria-hidden="false" style="vertical-align: sub;">import_contacts</mat-icon>Rezepte anzeigen</a>
-      <a mat-menu-item><mat-icon aria-hidden="false" style="vertical-align: sub;">add</mat-icon>Rezept anlegen</a>
+      <a routerLink="/edit" mat-menu-item><mat-icon aria-hidden="false" style="vertical-align: sub;">add</mat-icon>Rezept anlegen</a>
     </mat-menu>
+    <a routerLink="/shopping-list" mat-button style="font-size: 16px;">Einkaufsliste</a>
   </div>
 </nav>

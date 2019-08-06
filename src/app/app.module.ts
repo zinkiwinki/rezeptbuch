@@ -14,9 +14,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 @NgModule({
-  declarations: [AppComponent, RecipesComponent, RecipeEditComponent, MessagesComponent, NavbarComponent, HeaderComponent],
+  declarations: [AppComponent, RecipesComponent, RecipeEditComponent, MessagesComponent, NavbarComponent, HeaderComponent, ShoppingListComponent],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, BrowserAnimationsModule, MaterialImports],
   providers: [],
   bootstrap: [AppComponent],

@@ -9,7 +9,7 @@ import { MessageService } from './message.service';
 export class RecipeService {
   recipes: Recipe[] = [
     {
-      id: 11,
+      id: 1,
       name: 'Schnitzel',
       imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [
@@ -17,83 +17,83 @@ export class RecipeService {
           id: 18,
           name: 'Pfirsich',
           category: 'Obst',
-          unit: 'stk'
+          unit: 'stk',
         },
         {
           id: 19,
           name: 'Banane',
           category: 'Obst',
-          unit: 'stk'
+          unit: 'stk',
         },
         {
           id: 20,
           name: 'Apfel',
           category: 'Obst',
-          unit: 'stk'
+          unit: 'stk',
         },
       ],
       preparation: '',
     },
     {
-      id: 12,
+      id: 2,
       name: 'Nudeln',
-      imageUrl: 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [],
       preparation: '',
     },
     {
-      id: 13,
+      id: 3,
       name: 'Lasagne',
-      imageUrl: 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [],
       preparation: '',
     },
     {
-      id: 14,
+      id: 4,
       name: 'Kartoffeln',
-      imageUrl: 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [],
       preparation: '',
     },
     {
-      id: 15,
+      id: 5,
       name: 'Magneta',
-      imageUrl: 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [],
       preparation: '',
     },
     {
-      id: 16,
+      id: 6,
       name: 'RubberMan',
-      imageUrl: 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [],
       preparation: '',
     },
     {
-      id: 17,
+      id: 7,
       name: 'Dynama',
-      imageUrl: 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [],
       preparation: '',
     },
     {
-      id: 18,
+      id: 8,
       name: 'Dr IQ',
-      imageUrl: 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [],
       preparation: '',
     },
     {
-      id: 19,
+      id: 9,
       name: 'Magma',
-      imageUrl: 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [],
       preparation: '',
     },
     {
-      id: 20,
+      id: 10,
       name: 'Tornado',
-      imageUrl: 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)',
+      imageUrl: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
       ingredients: [],
       preparation: '',
     },
@@ -110,5 +110,13 @@ export class RecipeService {
     // TODO: send the message _after_ fetching the hero
     this.messageService.add(`RecipeService: fetched Recipe id=${id}`);
     return of(this.recipes.find((recipe) => recipe.id === id));
+  }
+
+  saveRecipe(recipe) {
+    if (!recipe.id) {
+      recipe.id = (this.recipes.length + 1);
+    }
+
+    this.recipes.push(recipe);
   }
 }
