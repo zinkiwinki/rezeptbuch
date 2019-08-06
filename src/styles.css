@@ -1,9 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { 
+html,
+body {
+  height: 100%;
+}
+body {
   margin: 0;
-   font-family: Roboto, 
-   "Helvetica Neue", sans-serif; 
-   background-color: rgb(250, 250, 250);
-  }
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: rgb(233, 233, 233);
+}
+
+.container {
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.mat-expansion-panel-header-title {
+  color: #618f30 !important;
+}
+.button {
+  background-color: #618f30;
+  color: white;
+}

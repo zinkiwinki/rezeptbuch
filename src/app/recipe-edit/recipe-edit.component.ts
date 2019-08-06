@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { RecipeService } from '../recipe.service';
 
 import { IngredientService } from '../ingredient.service';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -19,7 +20,13 @@ export class RecipeEditComponent implements OnInit {
   ingredients;
   isExisting = true;
 
-  constructor(private route: ActivatedRoute, private ingredientService: IngredientService, private recipeService: RecipeService, private location: Location) {}
+  constructor(
+    private route: ActivatedRoute,
+    private shoppingListService: ShoppingListService,
+    private ingredientService: IngredientService,
+    private recipeService: RecipeService,
+    private location: Location
+  ) {}
 
   getRecipe() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -39,6 +46,10 @@ export class RecipeEditComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  addToShoppingList() {
+    this.shoppingListService.add(this.recipe.ingredients);
   }
 
   save() {
