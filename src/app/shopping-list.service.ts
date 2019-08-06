@@ -19,6 +19,10 @@ export class ShoppingListService {
     return sumList;
   }
 
+  deleteShoppingList(){
+    this.shoppingList = [];
+  }
+
   add(ingredients) {
     let shoppingList = this.shoppingList || [];
     for (let i = 0; i < ingredients.length; i++) {

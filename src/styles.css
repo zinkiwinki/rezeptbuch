@@ -23,3 +23,7 @@ body {
   background-color: #618f30;
   color: white;
 }
+
+.example-full-width {
+  width: 100%;
+}

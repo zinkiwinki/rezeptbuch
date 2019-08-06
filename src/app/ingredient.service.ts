@@ -1,71 +1,71 @@
 import { Injectable } from '@angular/core';
-import { Ingredient } from './ingredient'
+import { Ingredient } from './ingredient';
 
 import { Observable, of } from 'rxjs';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IngredientService {
   ingredients: Ingredient[] = [
     {
-      id: 11,
+      id: 1,
       name: 'Schnitzel',
       category: 'penis',
-      unit: 'stk'
+      unit: 'stk',
     },
     {
-      id: 12,
+      id: 2,
       name: 'Nudeln',
       category: 'penis',
-      unit: 'stk'
+      unit: 'stk',
     },
     {
-      id: 13,
+      id: 3,
       name: 'Lasagne',
       category: 'penis',
-      unit: 'stk'
+      unit: 'stk',
     },
     {
-      id: 14,
+      id: 4,
       name: 'Kartoffeln',
       category: 'penis',
-      unit: 'stk'
+      unit: 'stk',
     },
     {
-      id: 15,
+      id: 5,
       name: 'Magneta',
       category: 'penis',
-      unit: 'stk'
+      unit: 'stk',
     },
     {
-      id: 16,
+      id: 6,
       name: 'RubberMan',
       category: 'penis',
-      unit: 'stk'
+      unit: 'stk',
     },
     {
-      id: 17,
+      id: 7,
       name: 'Dynama',
       category: 'penis',
-      unit: 'stk'
+      unit: 'stk',
     },
     {
-      id: 18,
+      id: 8,
       name: 'Pfirsich',
       category: 'Obst',
-      unit: 'stk'
+      unit: 'stk',
     },
     {
-      id: 19,
+      id: 9,
       name: 'Banane',
       category: 'Obst',
-      unit: 'stk'
+      unit: 'stk',
     },
     {
-      id: 20,
+      id: 10,
       name: 'Apfel',
       category: 'Obst',
-      unit: 'stk'
+      unit: 'stk',
     },
   ];
 
@@ -77,5 +77,13 @@ export class IngredientService {
 
   getIngredient(id): Observable<Ingredient> {
     return of(this.ingredients.find((ingredient) => ingredient.id === id));
+  }
+
+  save(ingredient) {
+    if (!ingredient.id) {
+      ingredient.id = this.ingredients.length + 1;
+    }
+
+    this.ingredients.push(ingredient);
   }
 }

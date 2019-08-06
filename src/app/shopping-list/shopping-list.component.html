@@ -23,6 +23,8 @@
             </button>
     </mat-panel-description>
 
+    <div *ngIf='shoppingList.length <= 0'><p>Bitte fügen Zutaten aus einem Rezept hinzu!</p></div>
+
       <div *ngFor="let category of shoppingList; let i = index" [attr.data-index]="i">
         <mat-card class="card">
           <mat-card-header>

@@ -12,7 +12,11 @@ export class ShoppingListComponent implements OnInit {
   constructor(private shoppingListService: ShoppingListService) {}
 
   addIngredient() {}
-  deleteShoppingList() {}
+  
+  deleteShoppingList() {
+    this.shoppingListService.deleteShoppingList();
+    this.getShoppingList();
+  }
 
   getShoppingList() {
     let rawList = this.shoppingListService.getShoppingList();

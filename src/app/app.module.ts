@@ -15,9 +15,10 @@ import { HeaderComponent } from './header/header.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { IngredientCreateComponent } from './ingredient-create/ingredient-create.component';
 
 @NgModule({
-  declarations: [AppComponent, RecipesComponent, RecipeEditComponent, MessagesComponent, NavbarComponent, HeaderComponent, ShoppingListComponent],
+  declarations: [AppComponent, RecipesComponent, RecipeEditComponent, MessagesComponent, NavbarComponent, HeaderComponent, ShoppingListComponent, IngredientCreateComponent],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, BrowserAnimationsModule, MaterialImports],
   providers: [],
   bootstrap: [AppComponent],

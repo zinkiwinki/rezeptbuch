@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeEditComponent }  from './recipe-edit/recipe-edit.component';
 import { ShoppingListComponent }  from './shopping-list/shopping-list.component';
+import { IngredientCreateComponent }  from './ingredient-create/ingredient-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'edit/:id', component: RecipeEditComponent },
   { path: 'edit', component: RecipeEditComponent },
   { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'ingredient-create', component: IngredientCreateComponent },
   
 ];
 

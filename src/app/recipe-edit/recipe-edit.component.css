@@ -4,14 +4,6 @@
   width: 100%;
 }
 
-.example-full-width {
-  width: 100%;
-}
-
-.mat-expansion-panel-header-title {
-  color: #618f30 !important;
-}
-
 .image_panel {
   margin-top: 1em;
   width: 45%;
@@ -30,4 +22,3 @@
   overflow: hidden;
   width: 45%;
 }
-
