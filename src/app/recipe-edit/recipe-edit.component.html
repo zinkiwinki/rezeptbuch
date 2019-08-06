@@ -1,21 +1,64 @@
 <app-header>
-    <h1 text style="margin-top: 0; margin-bottom: 0;">Rezept {{recipe.name || "neu anlegen"}}</h1>
-    <div buttons style="float:right;">
-      <button *ngIf='isExisting' mat-button style="background-color: #618f30;color:white;">
-        <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Rezept bearbeiten
-      </button>
-      <button  mat-button style="background-color: #618f30;color:white;">
-          <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px;">save</mat-icon>Speichern
-        </button>
-    </div>
-  </app-header>
-
-  <button (click)="goBack()">go back</button>
-  <h2>{{recipe.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{recipe.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="recipe.name" placeholder="name"/>
-    </label>
+  <h1 text style="float: left; margin-top: 0; margin-bottom: 0;">Rezept</h1>
+  <div buttons>
+    <button (click)="save()" mat-button style="background-color: #618f30;color:white;margin-left: 116em;">
+      <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Speichern
+    </button>
   </div>
- 
+</app-header>
+
+<div class="container">
+  <mat-expansion-panel class="image_panel" [expanded]="true" [disabled]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Bild
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <img [src]="recipe.imageUrl" height="100" width="100" />
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="recipe_panel" [expanded]="true" [disabled]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Rezept Daten
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Favorite food" name="name" [(ngModel)]="recipe.name" placeholder="Name" />
+    </mat-form-field>
+
+    <p>Options: {{ originalIngredients | json }}</p>
+    <p>Selected objects: {{ recipe.ingredients | json }}</p>
+
+    <mat-form-field>
+      <mat-label>Zutaten</mat-label>
+      <mat-select multiple [(ngModel)]="recipe.ingredients" class="example-select">
+        <mat-option *ngFor="let obj of originalIngredients" [value]="obj">{{ obj.name }}</mat-option>
+      </mat-select>
+
+      <!-- <mat-select [(ngModel)]="recipe.ingredients" name="ingredient" multiple>
+        <mat-option *ngFor="let ing of originalIngredients" [(value)]="ing.id"  >{{ ing.name }}</mat-option>
+      </mat-select> -->
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput [(ngModel)]="recipe.preparation" name="preparation" placeholder="Zubereitung"></textarea>
+    </mat-form-field>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="ingredient_panel" [expanded]="true" [disabled]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Zutaten
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div *ngFor="let ingredient of recipe.ingredients">
+      <mat-form-field class="example-full-width">
+        <input matInput type="number" placeholder="{{ ingredient.name }}" name="name" [(ngModel)]="ingredient.amount" />
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+</div>

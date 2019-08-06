@@ -9,7 +9,7 @@
 
 <mat-grid-list cols="6" rowHeight="2:1">
   <mat-grid-tile *ngFor="let recipe of recipes">
-    <mat-card class="example-card col-md-8">
+    <mat-card routerLink="/edit/{{recipe.id}}" style="cursor:pointer;" class="example-card col-md-8">
       <mat-card-header>
         <div mat-card-avatar  [ngStyle]="{'background-image': 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)', 'background-size': 'cover'}" ></div>
         <mat-card-title>{{ recipe.name }}</mat-card-title>
