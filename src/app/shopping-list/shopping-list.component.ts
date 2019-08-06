@@ -1,5 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ShoppingListService } from '../shopping-list.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { IngredientService } from '../ingredient.service';
+
+export interface DialogData {
+  ingredient: any[];
+  ingredients: any[];
+  amount: number;
+}
 
 @Component({
   selector: 'app-shopping-list',
@@ -8,11 +16,24 @@ import { ShoppingListService } from '../shopping-list.service';
 })
 export class ShoppingListComponent implements OnInit {
   shoppingList;
+  ingredients;
 
-  constructor(private shoppingListService: ShoppingListService) {}
+  constructor(public dialog: MatDialog, private ingredientService: IngredientService, private shoppingListService: ShoppingListService) {}
 
-  addIngredient() {}
-  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(IngredientDialog, {
+      width: '500px',
+      data: { ingredients: this.ingredients, ingredient: [], amount: '' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      let ingredient = result.ingredient;
+      ingredient.amount = result.amount;
+      this.shoppingListService.add([ingredient]);
+      this.getShoppingList();
+    });
+  }
+
   deleteShoppingList() {
     this.shoppingListService.deleteShoppingList();
     this.getShoppingList();
@@ -43,8 +64,24 @@ export class ShoppingListComponent implements OnInit {
     this.shoppingList = categorizedList;
     console.log(categorizedList);
   }
+  getIngredients() {
+    this.ingredientService.getIngredients().subscribe((ingredients) => (this.ingredients = ingredients));
+  }
 
   ngOnInit() {
     this.getShoppingList();
+    this.getIngredients();
+  }
+}
+
+@Component({
+  selector: 'ingredient-dialog',
+  templateUrl: 'ingredient-dialog.html',
+})
+export class IngredientDialog {
+  constructor(public dialogRef: MatDialogRef<IngredientDialog>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick() {
+    this.dialogRef.close();
   }
 }

@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Zutat hinzufügen</h1>
+<div mat-dialog-content>
+  <p>Bitte eine Zutat wählen und die Menge angeben</p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Zutaten</mat-label>
+    <mat-select [(ngModel)]="data.ingredient">
+      <mat-option *ngFor="let obj of data.ingredients" [value]="obj">{{ obj.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width"> 
+    <input matInput [(ngModel)]="data.amount" type="number" placeholder="Anzahl von {{ data.ingredient.name }} in {{ data.ingredient.unit }}" required />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Schließen</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Hinzufügen</button>
+</div>
