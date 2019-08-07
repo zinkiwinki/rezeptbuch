@@ -1,9 +1,14 @@
 <app-header>
-  <h1 text style="float: left; margin-top: 0; margin-bottom: 0;">Rezept</h1>
-  <div buttons>
-    <button (click)="save()" class="button" mat-button style="margin-left: 116em;">
-      <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Speichern
-    </button>
+  <h1 text style="float: left; margin-top: 0; margin-bottom: 0;padding-left:10px;">Rezept</h1>
+  <div buttons style="overflow:hidden">
+    <div style="float: right;padding-right:10px;">
+      <button *ngIf="isExisting && isDisabled" (click)="editRecipe()" class="button" mat-button style="float:left;overflow:hidden;">
+        <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">edit</mat-icon>Bearbeiten
+      </button>
+      <button *ngIf="!isExisting || !isDisabled" (click)="save()" class="button" mat-button style="float:right;overflow:hidden;margin-left:2px;">
+        <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">save</mat-icon>Speichern
+      </button>
+    </div>
   </div>
 </app-header>
 
@@ -18,8 +23,27 @@
       <img *ngIf="!!recipe.imageUrl" [src]="recipe.imageUrl" height="100" width="100" />
     </div>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Bild URL" name="imageUrl" [(ngModel)]="recipe.imageUrl"/>
+      <input matInput [disabled]="isDisabled" placeholder="Bild URL" name="imageUrl" [(ngModel)]="recipe.imageUrl" />
     </mat-form-field>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="ingredient_panel" [expanded]="true" [disabled]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Zutaten
+      </mat-panel-title>
+      <mat-panel-description>
+        <button (click)="addToShoppingList()" mat-button class="button">
+          <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">shopping_card</mat-icon>Zutaten zur Einkaufsliste hinzufügen
+        </button>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div *ngFor="let ingredient of recipe.ingredients">
+      <mat-form-field class="example-full-width">
+        <input matInput [disabled]="isDisabled" type="number" placeholder="Anzahl von {{ ingredient.name }} in {{ ingredient.unit }}" name="name" [(ngModel)]="ingredient.amount" />
+      </mat-form-field>
+    </div>
   </mat-expansion-panel>
 
   <mat-expansion-panel class="recipe_panel" [expanded]="true" [disabled]="true">
@@ -30,7 +54,7 @@
     </mat-expansion-panel-header>
 
     <mat-form-field class="example-full-width">
-      <input matInput name="name" [(ngModel)]="recipe.name" placeholder="Name" required/>
+      <input matInput [disabled]="isDisabled" name="name" [(ngModel)]="recipe.name" placeholder="Name" required />
     </mat-form-field>
 
     <!-- <p>Options: {{ ingredients | json }}</p>
@@ -38,36 +62,15 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Zutaten</mat-label>
-      <mat-select multiple [(ngModel)]="recipe.ingredients">
+      <mat-select [disabled]="isDisabled" multiple [(ngModel)]="recipe.ingredients">
         <mat-option *ngFor="let obj of ingredients" [value]="obj">{{ obj.name }}</mat-option>
       </mat-select>
-
-      <!-- <mat-select [(ngModel)]="recipe.ingredients" name="ingredient" multiple>
-        <mat-option *ngFor="let ing of originalIngredients" [(value)]="ing.id"  >{{ ing.name }}</mat-option>
-      </mat-select> -->
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <textarea matInput [(ngModel)]="recipe.preparation" name="preparation" placeholder="Zubereitung"></textarea>
+      <textarea matInput [disabled]="isDisabled" rows="8" [(ngModel)]="recipe.preparation" name="preparation" placeholder="Zubereitung"></textarea>
     </mat-form-field>
   </mat-expansion-panel>
 
-  <mat-expansion-panel class="ingredient_panel" [expanded]="true" [disabled]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Zutaten
-      </mat-panel-title>
-      <mat-panel-description>
-          <button (click)="addToShoppingList()" mat-button class="button">
-              <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">shopping_card</mat-icon>Zutaten zur Einkaufsliste hinzufügen
-            </button>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <div *ngFor="let ingredient of recipe.ingredients">
-      <mat-form-field class="example-full-width">
-        <input matInput type="number" placeholder="Anzahl von {{ ingredient.name }} in {{ ingredient.unit }}" name="name" [(ngModel)]="ingredient.amount" />
-      </mat-form-field>
-    </div>
-  </mat-expansion-panel>
+  <div class="placeholder"></div>
 </div>

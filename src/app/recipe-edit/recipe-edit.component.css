@@ -6,19 +6,34 @@
 
 .image_panel {
   margin-top: 1em;
-  width: 45%;
+  float: left;
+  overflow: hidden;
+  width: 49%;
+  margin-top: 1em;
 }
 
 .ingredient_panel {
   margin-top: 1em;
   float: right;
   overflow: hidden;
-  width: 45%;
+  width: 50%;
+  min-height: 9em;
 }
 
 .recipe_panel {
   margin-top: 1em;
   float: left;
   overflow: hidden;
-  width: 45%;
+  width: 49%;
+}
+
+input:disabled{
+  color: black;
+}
+textarea:disabled{
+  color: black;
+}
+
+mat-label{
+  color: black;
 }

@@ -14,9 +14,10 @@ export class IngredientCreateComponent implements OnInit {
   };
   constructor(private ingredientService: IngredientService) {}
 
-
-  save(){
-    this.ingredientService.save(this.ingredient);
+  save() {
+    if (this.ingredient.name != '') {
+      this.ingredientService.save(this.ingredient);
+    }
   }
   ngOnInit() {}
 }

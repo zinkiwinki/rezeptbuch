@@ -1,9 +1,9 @@
 <app-header>
-  <h1 text style="float: left; margin-top: 0; margin-bottom: 0;">Rezepte</h1>
-  <div buttons>
-    <button routerLink="/edit" mat-button class="button" style="margin-left: 116em;">
-      <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Rezept hinzufügen
-    </button>
+  <h1 text style="float: left; margin-top: 0; margin-bottom: 0;padding-left: 10px;">Rezepte</h1>
+  <div buttons style="overflow:hidden;">
+    <div style="float: right;padding-right:10px;">
+      <button routerLink="/edit" mat-button class="button"><mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Rezept hinzufügen</button>
+    </div>
   </div>
 </app-header>
 
@@ -12,7 +12,7 @@
     <mat-grid-tile *ngFor="let recipe of recipes">
       <mat-card routerLink="/edit/{{ recipe.id }}" style="cursor:pointer;" class="example-card col-md-8">
         <mat-card-header>
-          <div mat-card-avatar [ngStyle]="{ 'background-image': 'url(https://material.angular.io/assets/img/examples/shiba1.jpg)', 'background-size': 'cover' }"></div>
+          <div mat-card-avatar [ngStyle]="{ 'background-image': 'url(' + recipe.imageUrl + ')', 'background-size': 'cover' }"></div>
           <mat-card-title>{{ recipe.name }}</mat-card-title>
         </mat-card-header>
         <mat-card-footer>

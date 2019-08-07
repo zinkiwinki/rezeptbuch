@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipes/recipe';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { RecipeService } from '../recipe.service';
 
 import { IngredientService } from '../ingredient.service';
@@ -15,6 +14,7 @@ import { ShoppingListService } from '../shopping-list.service';
 export class RecipeEditComponent implements OnInit {
   panelOpenState = true;
 
+  isDisabled = true;
   recipe: Recipe;
 
   ingredients;
@@ -24,9 +24,12 @@ export class RecipeEditComponent implements OnInit {
     private route: ActivatedRoute,
     private shoppingListService: ShoppingListService,
     private ingredientService: IngredientService,
-    private recipeService: RecipeService,
-    private location: Location
+    private recipeService: RecipeService
   ) {}
+
+  editRecipe() {
+    this.isDisabled = false;
+  }
 
   getRecipe() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -36,6 +39,7 @@ export class RecipeEditComponent implements OnInit {
 
     if (!this.recipe) {
       this.isExisting = false;
+      this.isDisabled = false;
       this.recipe = new Recipe('', '', '', [], '');
     }
   }
@@ -44,20 +48,19 @@ export class RecipeEditComponent implements OnInit {
     this.ingredientService.getIngredients().subscribe((ingredients) => (this.ingredients = ingredients));
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-
   addToShoppingList() {
-    this.shoppingListService.add(this.recipe.ingredients);
+    if (this.recipe.ingredients && this.recipe.ingredients.length > 0) {
+      this.shoppingListService.add(this.recipe.ingredients);
+    }
   }
 
   save() {
-    if (this.isExisting) {
-      console.log(this.recipe);
-    } else {
+    if (!this.isExisting) {
       this.recipeService.saveRecipe(this.recipe);
+      this.isExisting = true;
     }
+
+    this.isDisabled = true;
   }
 
   ngOnInit() {

@@ -9,64 +9,70 @@ export class IngredientService {
   ingredients: Ingredient[] = [
     {
       id: 1,
-      name: 'Schnitzel',
-      category: 'penis',
-      unit: 'stk',
+      name: 'Couscous',
+      category: 'Beilage',
+      unit: 'g'
     },
     {
       id: 2,
-      name: 'Nudeln',
-      category: 'penis',
-      unit: 'stk',
+      name: 'Rinderhackfleisch',
+      category: 'Fleisch',
+      unit: 'g'
     },
     {
       id: 3,
-      name: 'Lasagne',
-      category: 'penis',
-      unit: 'stk',
+      name: 'Paprikaschote(n)',
+      category: 'Gemüse',
+      unit: 'stk'
     },
     {
       id: 4,
-      name: 'Kartoffeln',
-      category: 'penis',
-      unit: 'stk',
+      name: 'Tomate(n)',
+      category: 'Gemüse',
+      unit: 'stk'
     },
     {
       id: 5,
-      name: 'Magneta',
-      category: 'penis',
-      unit: 'stk',
+      name: 'Frühlingszwiebel(n)',
+      category: 'Gemüse',
+      unit: 'stk'
     },
     {
       id: 6,
-      name: 'RubberMan',
-      category: 'penis',
-      unit: 'stk',
+      name: 'Salz',
+      category: 'Gewürz',
+      unit: 'brise(n)'
     },
     {
       id: 7,
-      name: 'Dynama',
-      category: 'penis',
-      unit: 'stk',
+      name: 'Pfeffer',
+      category: 'Gemüse',
+      unit: 'brise(n)'
     },
     {
       id: 8,
-      name: 'Pfirsich',
-      category: 'Obst',
-      unit: 'stk',
+      name: 'Putenschnitzel',
+      category: 'Fleisch',
+      unit: 'g'
     },
     {
       id: 9,
-      name: 'Banane',
+      name: 'Zitrone',
       category: 'Obst',
-      unit: 'stk',
+      unit: 'stk'
     },
     {
       id: 10,
-      name: 'Apfel',
-      category: 'Obst',
-      unit: 'stk',
+      name: 'Brokkoli',
+      category: 'Gemüse',
+      unit: 'g'
     },
+    {
+      id: 11,
+      name: 'Kapern',
+      category: 'Gewürz',
+      unit: 'EL'
+    }
   ];
 
   constructor() {}

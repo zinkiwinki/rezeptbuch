@@ -1,9 +1,14 @@
 <app-header>
-  <h1 text style="margin-top: 0; margin-bottom: 0;">Einkaufsliste</h1>
-  <div buttons>
-    <!-- <button (click)="save()" mat-button style="background-color: #618f30;color:white;margin-left: 116em;">
-        <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Speichern
-      </button> -->
+  <h1 text style="float: left; margin-top: 0; margin-bottom: 0;padding-left:10px;">Einkaufsliste</h1>
+  <div buttons style="overflow:hidden">
+    <div style="float: right;padding-right:10px;">
+      <button (click)="openDialog()" class="button" mat-button style="float:left;overflow:hidden;">
+        <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Zutat hinzufügen
+      </button>
+      <button (click)="deleteShoppingList()" class="button" mat-button style="float:right;overflow:hidden;margin-left:2px;">
+        <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">delete</mat-icon>Liste leeren
+      </button>
+    </div>
   </div>
 </app-header>
 
@@ -14,28 +19,20 @@
         Zutaten
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <mat-panel-description>
-        <button (click)="openDialog()" mat-button class="button">
-            <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Zutat hinzufügen
-          </button>
-          <button (click)="deleteShoppingList()" mat-button class="button">
-              <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">delete</mat-icon>Liste leeren
-            </button>
-    </mat-panel-description>
 
-    <div *ngIf='shoppingList.length <= 0'><p>Bitte fügen Zutaten aus einem Rezept hinzu!</p></div>
+    <div *ngIf="shoppingList.length <= 0"><p>Bitte fügen Zutaten aus einem Rezept hinzu!</p></div>
 
-      <div *ngFor="let category of shoppingList; let i = index" [attr.data-index]="i">
-        <mat-card class="card">
-          <mat-card-header>
-            <mat-card-title>{{ category.category }}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <ul *ngFor="let ings of category.ingredients; let i = index" [attr.data-index]="i">
-              <li>{{ings.amount}} {{ings.unit}} {{ings.name}}</li>
-            </ul>
-          </mat-card-content>
-        </mat-card>
-      </div>
+    <div *ngFor="let category of shoppingList">
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>{{ category.category }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul *ngFor="let ings of category.ingredients">
+            <li>{{ ings.amount }} {{ ings.unit }} {{ ings.name }}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </mat-expansion-panel>
 </div>

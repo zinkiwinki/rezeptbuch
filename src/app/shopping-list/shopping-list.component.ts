@@ -29,8 +29,11 @@ export class ShoppingListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       let ingredient = result.ingredient;
       ingredient.amount = result.amount;
-      this.shoppingListService.add([ingredient]);
-      this.getShoppingList();
+
+      if (ingredient && ingredient.length > 0) {
+        this.shoppingListService.add([ingredient]);
+        this.getShoppingList();
+      }
     });
   }
 

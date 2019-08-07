@@ -1,9 +1,9 @@
 <app-header>
-  <h1 text style="margin-top: 0; margin-bottom: 0;">Zutat erstellen</h1>
-  <div buttons>
-    <!-- <button (click)="save()" class="button" mat-button style="margin-left: 116em;">
-      <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">add</mat-icon>Speichern
-    </button> -->
+  <h1 text style="float: left; margin-top: 0; margin-bottom: 0;padding-left:10px;">Zutat erstellen</h1>
+  <div buttons style="overflow:hidden">
+    <div style="float: right;padding-right:10px;">
+      <button (click)="save()" class="button" mat-button><mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">save</mat-icon>Speichern</button>
+    </div>
   </div>
 </app-header>
 
@@ -14,20 +14,17 @@
         Zutaten Daten
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <mat-panel-description>
-      <button (click)="save()" mat-button class="button"><mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">shopping_card</mat-icon>Speichern</button>
-    </mat-panel-description>
 
     <mat-form-field class="example-full-width">
-      <input matInput name="name" [(ngModel)]="ingredient.name" placeholder="Name" required/>
+      <input matInput name="name" [(ngModel)]="ingredient.name" placeholder="Name" required />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput name="unit" [(ngModel)]="ingredient.unit" placeholder="Einheit" required/>
+      <input matInput name="unit" [(ngModel)]="ingredient.unit" placeholder="Einheit" required />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput name="category" [(ngModel)]="ingredient.category" placeholder="Kategorie" required/>
+      <input matInput name="category" [(ngModel)]="ingredient.category" placeholder="Kategorie" required />
     </mat-form-field>
   </mat-expansion-panel>
 </div>
