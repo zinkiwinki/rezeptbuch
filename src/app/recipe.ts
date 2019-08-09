@@ -7,3 +7,4 @@ export class Recipe {
 
   constructor(id, name, imageUrl, ingredients, preparation) {}
 }
+ 
