@@ -9,7 +9,6 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipesComponent implements OnInit {
   recipes: Recipe[];
-  selectedRecipe: Recipe;
 
   constructor(private recipeService: RecipeService) {}
 

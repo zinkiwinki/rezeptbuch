@@ -18,12 +18,6 @@ import { IngredientCreateComponent } from './ingredient-create/ingredient-create
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
-// TODO!!!
-// - Doku schreiben bzw erweitern und in projekt pushen
-// - Jonas zum Repo hinzufügen
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
