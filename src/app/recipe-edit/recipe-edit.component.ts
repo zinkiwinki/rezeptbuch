@@ -64,8 +64,6 @@ export class RecipeEditComponent implements OnInit {
     // Same issue as in the shopping-list:
     // to delete all references of an ingredient
     // i have do this
-    // IMPORTANT!! -> this will produze an compiling Error, because TypeScript cannot get this far in an object
-    // but it works!
     for (let ing in this.recipe.ingredients) {
       let recipeIng = this.recipe.ingredients[ing];
       let ingredient = {
