@@ -1,3 +1,6 @@
+// This App is created By Christian Zink
+// Mat.No. 7116534
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 

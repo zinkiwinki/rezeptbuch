@@ -1,3 +1,5 @@
+// This App is created By Christian Zink
+// Mat.No. 7116534
 import 'hammerjs';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
