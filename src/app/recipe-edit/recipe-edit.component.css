@@ -27,13 +27,13 @@
   width: 49%;
 }
 
-input:disabled{
+input:disabled {
   color: black;
 }
-textarea:disabled{
+textarea:disabled {
   color: black;
 }
 
-mat-label{
-  color: black;
+.mat-select-disabled .mat-select-value {
+  color: black !important;
 }

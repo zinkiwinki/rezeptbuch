@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IngredientService } from '../ingredient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ingredient-create',
@@ -12,12 +13,14 @@ export class IngredientCreateComponent implements OnInit {
     unit: '',
     category: '',
   };
-  constructor(private ingredientService: IngredientService) {}
+  constructor(private ingredientService: IngredientService, public router: Router) {}
 
   save() {
     if (this.ingredient.name != '') {
       this.ingredientService.save(this.ingredient);
     }
+    
+ this.router.navigate(['/shopping-list']);
   }
   ngOnInit() {}
 }

@@ -19,10 +19,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 
 // TODO!!!
-// - Multi Select preselecten (wenn das angular nicht ohne erheblich aufwand zulässt eine alternative suchen)
-// - addierungsfehler beim zuten hinzufügen fixen
-// - bei speichern zurück auf die Übersicht
-// - Rezeptübersicht schöner machen
 // - code kommentieren
 // - nach den punkten: CODE REFACTOREN
 // - Doku schreiben bzw erweitern und in projekt pushen

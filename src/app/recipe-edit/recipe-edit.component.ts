@@ -20,6 +20,8 @@ export class RecipeEditComponent implements OnInit {
   ingredients;
   isExisting = true;
 
+  compareFn: ((f1: any, f2: any) => boolean) | null = this.compareByValue;
+
   constructor(
     private route: ActivatedRoute,
     private shoppingListService: ShoppingListService,
@@ -27,6 +29,9 @@ export class RecipeEditComponent implements OnInit {
     private recipeService: RecipeService
   ) {}
 
+  compareByValue(f1: any, f2: any) {
+    return f1 && f2 && f1.name === f2.name;
+  }
   editRecipe() {
     this.isDisabled = false;
   }
@@ -49,8 +54,21 @@ export class RecipeEditComponent implements OnInit {
   }
 
   addToShoppingList() {
-    if (this.recipe.ingredients && this.recipe.ingredients.length > 0) {
-      this.shoppingListService.add(this.recipe.ingredients);
+    let ings = [];
+    for (let ing in this.recipe.ingredients) {
+      let recipeIng = this.recipe.ingredients[ing];
+      let ingredient = {
+        name: recipeIng.name,
+        unit: recipeIng.unit,
+        amount: recipeIng.amount,
+        category: recipeIng.category,
+        id: recipeIng.id,
+      };
+      ings.push(ingredient);
+    }
+
+    if (ings && ings.length > 0) {
+      this.shoppingListService.add(ings);
     }
   }
 

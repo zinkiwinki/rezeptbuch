@@ -62,7 +62,7 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Zutaten</mat-label>
-      <mat-select [disabled]="isDisabled" multiple [(ngModel)]="recipe.ingredients">
+      <mat-select [compareWith]="compareFn" [disabled]="isDisabled" multiple [(ngModel)]="recipe.ingredients">
         <mat-option *ngFor="let obj of ingredients" [value]="obj">{{ obj.name }}</mat-option>
       </mat-select>
     </mat-form-field>
