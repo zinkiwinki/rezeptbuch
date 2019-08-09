@@ -46,7 +46,7 @@ export class IngredientService {
     {
       id: 7,
       name: 'Pfeffer',
-      category: 'Gemüse',
+      category: 'Gewürz',
       unit: 'brise(n)'
     },
     {
