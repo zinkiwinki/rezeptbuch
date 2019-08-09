@@ -20,6 +20,8 @@ export class RecipeEditComponent implements OnInit {
   ingredients;
   isExisting = true;
 
+  // to preselect the ingredients i have to compare all ingredients in the recipe 
+  // with all existent ingredients
   compareFn: ((f1: any, f2: any) => boolean) | null = this.compareByValue;
 
   constructor(
@@ -29,9 +31,12 @@ export class RecipeEditComponent implements OnInit {
     private recipeService: RecipeService
   ) {}
 
+  // this is the method for the comparison
   compareByValue(f1: any, f2: any) {
     return f1 && f2 && f1.name === f2.name;
   }
+
+  // to edit a recipe i only habe an disabled toggle prop
   editRecipe() {
     this.isDisabled = false;
   }
@@ -42,6 +47,7 @@ export class RecipeEditComponent implements OnInit {
       this.recipeService.getRecipe(id).subscribe((recipe) => (this.recipe = recipe));
     }
 
+    // if a new recipe will be created
     if (!this.recipe) {
       this.isExisting = false;
       this.isDisabled = false;
@@ -55,6 +61,11 @@ export class RecipeEditComponent implements OnInit {
 
   addToShoppingList() {
     let ings = [];
+    // Same issue as in the shopping-list:
+    // to delete all references of an ingredient
+    // i have do this
+    // IMPORTANT!! -> this will produze an compiling Error, because TypeScript cannot get this far in an object
+    // but it works!
     for (let ing in this.recipe.ingredients) {
       let recipeIng = this.recipe.ingredients[ing];
       let ingredient = {

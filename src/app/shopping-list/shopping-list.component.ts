@@ -27,18 +27,15 @@ export class ShoppingListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      // To delete the references of the ingredients
+      // i have to do this!
       let ingredient = {
-        name: '',
-        unit: '',
-        amount: '',
-        category: '',
-        id: ''
+        name: result.ingredient.name,
+        unit: result.ingredient.unit,
+        amount: result.amount,
+        category: result.ingredient.category,
+        id: result.ingredient.id
       };
-      ingredient.name = result.ingredient.name,
-      ingredient.unit = result.ingredient.unit,
-      ingredient.category = result.ingredient.category,
-      ingredient.id = result.ingredient.id,
-      ingredient.amount = result.amount
       if (ingredient) {
         this.shoppingListService.add([ingredient]);
         this.getShoppingList();
@@ -51,6 +48,7 @@ export class ShoppingListComponent implements OnInit {
     this.getShoppingList();
   }
 
+  //This methods sorts all ingredients by their category
   getShoppingList() {
     let rawList = this.shoppingListService.getShoppingList();
 

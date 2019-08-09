@@ -19,7 +19,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 
 // TODO!!!
-// - code kommentieren
 // - nach den punkten: CODE REFACTOREN
 // - Doku schreiben bzw erweitern und in projekt pushen
 // - Jonas zum Repo hinzufügen
