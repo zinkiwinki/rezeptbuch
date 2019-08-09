@@ -65,7 +65,6 @@ export class ShoppingListComponent implements OnInit {
       index++;
     }
     this.shoppingList = categorizedList;
-    console.log(categorizedList);
   }
   getIngredients() {
     this.ingredientService.getIngredients().subscribe((ingredients) => (this.ingredients = ingredients));

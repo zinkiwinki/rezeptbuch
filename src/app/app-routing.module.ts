@@ -5,6 +5,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeEditComponent }  from './recipe-edit/recipe-edit.component';
 import { ShoppingListComponent }  from './shopping-list/shopping-list.component';
 import { IngredientCreateComponent }  from './ingredient-create/ingredient-create.component';
+import { PageNotFoundComponent }  from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'edit', component: RecipeEditComponent },
   { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'ingredient-create', component: IngredientCreateComponent },
+  { path: '404', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/404', pathMatch: 'full' },
   
 ];
 

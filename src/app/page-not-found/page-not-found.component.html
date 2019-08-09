@@ -1,0 +1,23 @@
+<app-header>
+  <h1 text style="float: left; margin-top: 0; margin-bottom: 0;padding-left: 10px;">Rezepte</h1>
+  <div buttons style="overflow:hidden;">
+    <div style="float: right;padding-right:10px;">
+      <button routerLink="/recipes" mat-button class="button">
+        <mat-icon aria-hidden="false" style="vertical-align: middle;padding-right: 5px">arrow_back</mat-icon>Zurück zur Rezeptübersicht
+      </button>
+    </div>
+  </div>
+</app-header>
+<div class="container">
+  <section>
+    <div >
+      404 - Wir haben nach Ihrer Anfrage gesucht
+    </div>
+    <div style="margin-left: 29em">
+      <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div >
+      ... sie jedoch nicht gefunden.
+    </div>
+  </section>
+</div>

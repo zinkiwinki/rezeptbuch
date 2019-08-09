@@ -15,17 +15,18 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingListComponent, IngredientDialog } from './shopping-list/shopping-list.component';
 import { IngredientCreateComponent } from './ingredient-create/ingredient-create.component';
-import { MatCheckboxChange } from '@angular/material';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 // TODO!!!
 // - Multi Select preselecten (wenn das angular nicht ohne erheblich aufwand zulässt eine alternative suchen)
-// - bei speichern zurück auf die Übersicht
 // - addierungsfehler beim zuten hinzufügen fixen
+// - bei speichern zurück auf die Übersicht
+// - Rezeptübersicht schöner machen
 // - code kommentieren
-// - 404 seite erstellen
 // - nach den punkten: CODE REFACTOREN
 // - Doku schreiben bzw erweitern und in projekt pushen
+// - Jonas zum Repo hinzufügen
 
 
 
@@ -39,6 +40,7 @@ import { MatCheckboxChange } from '@angular/material';
     ShoppingListComponent,
     IngredientCreateComponent,
     IngredientDialog,
+    PageNotFoundComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, BrowserAnimationsModule, MaterialImports],
   providers: [],
